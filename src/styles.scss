@@ -1,0 +1,117 @@
+// Nowa Paleta Kolorystyczna: Iza
+$color-background: #ffffff;
+$color-accent: #A8B5A2;      // Szałwiowa zieleń
+$color-secondary-bg: #F2ECE6; // Jasny beż
+$color-text: #2F3A34;        // Ciemna zieleń / grafit
+$color-muted: #6b7280;
+
+$font-headings: 'Playfair Display', serif;
+$font-body: 'Inter', sans-serif;
+
+// Global Styles
+:root {
+  --bg-color: #{$color-background};
+  --accent-color: #{$color-accent};
+  --text-color: #{$color-text};
+  --secondary-bg: #{$color-secondary-bg};
+  --secondary-color: #{$color-muted};
+  --font-headings: #{$font-headings};
+  --font-body: #{$font-body};
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-headings);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+}
+
+p {
+  margin-bottom: 1.2rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+ul {
+  list-style: none;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+section {
+  padding: 6rem 0;
+  @media (max-width: 768px) {
+    padding: 4rem 0;
+  }
+}
+
+.btn {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  text-align: center;
+
+  &--primary {
+    background-color: var(--accent-color);
+    color: #fff;
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(168, 181, 162, 0.3);
+    }
+  }
+
+  &--secondary {
+    background-color: transparent;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    &:hover {
+      background-color: var(--accent-color);
+      color: #fff;
+    }
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
