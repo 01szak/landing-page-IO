@@ -22,16 +22,14 @@ import { CommonModule } from '@angular/common';
           </div>
           <div class="link-group">
             <h4>Social Media</h4>
-            <a href="#">LinkedIn</a>
-            <a href="#">Instagram</a>
-            <a href="#">Facebook</a>
+            <a href="https://www.instagram.com/iza_olszewska/">Instagram</a>
+            <a href="https://www.facebook.com/iza.olszewska.16?locale=pl_PL">Facebook</a>
           </div>
         </div>
       </div>
       <div class="container footer-bottom">
         <p>&copy; 2026 Izabela Olszewska. Wszelkie prawa zastrzeżone.</p>
-        <p>Strona nie stanowi obietnicy szybkich zysków ani modelu MLM.</p>
-      </div>
+      </div>g
     </footer>
   `,
   styles: [`
@@ -90,7 +88,7 @@ import { CommonModule } from '@angular/common';
         color: var(--secondary-color);
         margin-bottom: 1rem;
         font-size: 1rem;
-        
+
         &:hover {
           color: var(--accent-color);
         }

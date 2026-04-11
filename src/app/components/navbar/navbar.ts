@@ -6,18 +6,18 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <nav [class.scrolled]="isScrolled">
+    <nav [class.scrolled]="isScrolledDown">
       <div class="container nav-content">
-        <a href="#hero" class="logo">IZA</a>
-        <div class="nav-links" [class.active]="isMenuOpen">
-          <a href="#for-who" (click)="isMenuOpen = false">Dla kogo</a>
-          <a href="#story" (click)="isMenuOpen = false">O mnie</a>
-          <a href="#what-i-do" (click)="isMenuOpen = false">Co robię</a>
-          <a href="#how-it-works" (click)="isMenuOpen = false">Jak to działa</a>
-          <a href="#contact" class="btn btn--primary btn--sm" (click)="isMenuOpen = false">Kontakt</a>
-        </div>
-        <button class="menu-toggle" (click)="isMenuOpen = !isMenuOpen">
-          <span [class.active]="isMenuOpen"></span>
+        <li (click)="scrollTo('hero')" class="logo">IZA</li>
+        <ul class="nav-links" [class.active]="isMobileMenuOpen">
+          <li (click)="scrollTo('for-who')">Dla kogo</li>
+          <li (click)="scrollTo('story')">O mnie</li>
+          <li (click)="scrollTo('what-i-do')">Co robię</li>
+          <li (click)="scrollTo('how-it-works')">Jak to działa</li>
+          <li (click)="scrollTo('contact')" class="btn btn--primary btn--sm" >Kontakt</li>
+        </ul>
+        <button class="menu-toggle" (click)="isMobileMenuOpen = !isMobileMenuOpen">
+          <span [class.active]="isMobileMenuOpen"></span>
         </button>
       </div>
     </nav>
@@ -31,7 +31,7 @@ import { CommonModule } from '@angular/common';
       z-index: 1000;
       padding: 1.5rem 0;
       transition: all 0.4s ease;
-      
+
       &.scrolled {
         background-color: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(10px);
@@ -59,19 +59,20 @@ import { CommonModule } from '@angular/common';
       align-items: center;
       gap: 2rem;
 
-      a {
+      li {
         font-size: 0.9rem;
         font-weight: 500;
         text-transform: uppercase;
         letter-spacing: 1px;
         color: var(--text-color);
         opacity: 0.8;
-        
+
         &:hover {
           color: var(--accent-color);
           opacity: 1;
+          cursor: pointer;
         }
-        
+
         &.btn {
           color: #fff;
           opacity: 1;
@@ -116,7 +117,7 @@ import { CommonModule } from '@angular/common';
         background: var(--text-color);
         position: absolute;
         transition: 0.3s;
-        
+
         &::before, &::after {
           content: '';
           position: absolute;
@@ -126,7 +127,7 @@ import { CommonModule } from '@angular/common';
           left: 0;
           transition: 0.3s;
         }
-        
+
         &::before { top: -8px; }
         &::after { bottom: -8px; }
 
@@ -140,11 +141,37 @@ import { CommonModule } from '@angular/common';
   `]
 })
 export class NavbarComponent {
-  isScrolled = false;
-  isMenuOpen = false;
+  isScrolledDown = false;
+  isMobileMenuOpen = false;
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
-    this.isScrolled = window.scrollY > 50;
+    this.isScrolledDown = window.scrollY > 50;
+  }
+
+  toggleMobileMenu() {
+    this.isScrolledDown = true;
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+    document.body.style.overflow = this.isMobileMenuOpen ? 'hidden' : 'auto';
+  }
+
+  scrollTo(id: string) {
+    const element = document.getElementById(id);
+    if (element) {
+      const offset = 80;
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+
+    if (this.isMobileMenuOpen) {
+      this.toggleMobileMenu();
+    }
   }
 }

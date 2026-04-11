@@ -31,15 +31,15 @@ import { SeoService } from './services/seo';
   template: `
     <app-navbar></app-navbar>
     <main>
-      <app-hero-section id="hero"></app-hero-section>
-      <app-for-who id="for-who"></app-for-who>
-      <app-story id="story"></app-story>
-      <app-what-i-do id="what-i-do"></app-what-i-do>
-      <app-how-it-works id="how-it-works"></app-how-it-works>
-      <app-benefits id="benefits"></app-benefits>
-      <app-not-for-everyone id="not-for-everyone"></app-not-for-everyone>
-      <app-cta-section id="cta"></app-cta-section>
-      <app-contact-form id="contact"></app-contact-form>
+      <app-hero-section></app-hero-section>
+      <app-for-who></app-for-who>
+      <app-story></app-story>
+      <app-what-i-do></app-what-i-do>
+      <app-how-it-works></app-how-it-works>
+      <app-benefits></app-benefits>
+      <app-not-for-everyone></app-not-for-everyone>
+      <app-cta-section></app-cta-section>
+      <app-contact-form></app-contact-form>
     </main>
     <app-footer></app-footer>
   `,
