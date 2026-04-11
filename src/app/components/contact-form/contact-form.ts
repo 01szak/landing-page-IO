@@ -172,7 +172,7 @@ export class ContactFormComponent {
         topic: 'Wiadomość ze strony https://izabelaolszewska.pl/',
         message: this.buildFormMessage()
       }
-      this.http.put('/api/email-service', formRequest)
+      this.http.put('/api/email-service/', formRequest)
         .pipe(take(1))
         .subscribe({
           next: () => {
@@ -181,7 +181,7 @@ export class ContactFormComponent {
               this.contactForm.reset();
             }, 300);
             },
-          error: (error) => {console.log(error)},
+          error: (error) => {console.log(formRequest)},
         })
 
     }
