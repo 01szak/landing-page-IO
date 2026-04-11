@@ -165,23 +165,12 @@ export class ContactFormComponent {
   }
 
   onSubmit() {
-    function buildFormMessage(): string {
-      const message =
-      `Czym się obecnie zajmujesz?
-       \n${this.contactForm.get('currentActivity')}
-        \nDlaczego szukasz zmiany?
-        \n${this.contactForm.get('reasonForChange')}
-        \nIle godzin tygodniowo możesz poświęcić?
-        \n${this.contactForm.get('hoursAvailable')}`
-        return message;
-    }
-
     if (this.contactForm.valid) {
       const formRequest = {
         firstname: this.contactForm.get('name'),
         email: this.contactForm.get('email'),
-        topic: 'Wiadomość ze strony izabelaolszewska.pl',
-        message: buildFormMessage()
+        topic: 'Wiadomość ze strony https://izabelaolszewska.pl/',
+        message: this.buildFormMessage()
       }
       this.http.put('/api/email-service', formRequest)
         .pipe(take(1))
@@ -196,6 +185,17 @@ export class ContactFormComponent {
         })
 
     }
+  }
+
+  buildFormMessage(): string {
+    const message =
+      `Czym się obecnie zajmujesz?
+       \n${this.contactForm.get('currentActivity')}
+        \nDlaczego szukasz zmiany?
+        \n${this.contactForm.get('reasonForChange')}
+        \nIle godzin tygodniowo możesz poświęcić?
+        \n${this.contactForm.get('hoursAvailable')}`
+    return message.toString();
   }
 }
 export type FormRequest = {email: string; topic: string; message: string, firstname: string;}
