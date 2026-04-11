@@ -167,8 +167,8 @@ export class ContactFormComponent {
   onSubmit() {
     if (this.contactForm.valid) {
       const formRequest = {
-        firstname: this.contactForm.get('name'),
-        email: this.contactForm.get('email'),
+        firstname: this.contactForm.get('name')?.value,
+        email: this.contactForm.get('email')?.value,
         topic: 'Wiadomość ze strony https://izabelaolszewska.pl/',
         message: this.buildFormMessage()
       }
@@ -190,11 +190,11 @@ export class ContactFormComponent {
   buildFormMessage(): string {
     const message =
       `Czym się obecnie zajmujesz?
-       \n${this.contactForm.get('currentActivity')}
+       \n${this.contactForm.get('currentActivity')?.value}
         \nDlaczego szukasz zmiany?
-        \n${this.contactForm.get('reasonForChange')}
+        \n${this.contactForm.get('reasonForChange')?.value}
         \nIle godzin tygodniowo możesz poświęcić?
-        \n${this.contactForm.get('hoursAvailable')}`
+        \n${this.contactForm.get('hoursAvailable')?.value}`
     return message.toString();
   }
 }
