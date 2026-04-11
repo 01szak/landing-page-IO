@@ -166,7 +166,7 @@ export class ContactFormComponent {
 
   onSubmit() {
     if (this.contactForm.valid) {
-      this.http.put('/api/email-service/',this.contactForm.value )
+      this.http.put('/api/email-service',this.contactForm.value )
         .pipe(take(1))
         .subscribe({
           next: () => {console.log('wysłany payload ' + this.contactForm.value )},
