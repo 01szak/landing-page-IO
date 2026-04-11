@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { fadeIn } from '../../animations/fade-in';
+import { HttpClient } from '@angular/common/http';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-contact-form',
@@ -16,14 +18,14 @@ import { fadeIn } from '../../animations/fade-in';
             <h2 class="section-title">Porozmawiajmy</h2>
             <p>Jeśli szukasz zmiany i chcesz budować coś własnego, jestem tutaj, aby Cię w tym wesprzeć.</p>
           </div>
-          
+
           <div class="form-wrapper">
             <form *ngIf="!submitted" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
               <div class="form-group">
                 <label>Imię</label>
                 <input type="text" formControlName="name" placeholder="Twoje imię">
               </div>
-              
+
               <div class="form-group">
                 <label>Email</label>
                 <input type="email" formControlName="email" placeholder="Twój adres email">
@@ -90,7 +92,7 @@ import { fadeIn } from '../../animations/fade-in';
 
     .form-group {
       margin-bottom: 2rem;
-      
+
       label {
         display: block;
         font-size: 0.9rem;
@@ -110,7 +112,7 @@ import { fadeIn } from '../../animations/fade-in';
         font-size: 1rem;
         transition: all 0.3s ease;
         background: #fafafa;
-        
+
         &:focus {
           outline: none;
           border-color: var(--accent-color);
@@ -123,12 +125,12 @@ import { fadeIn } from '../../animations/fade-in';
     .success-message {
       text-align: center;
       padding: 3rem 0;
-      
+
       h3 {
         margin-bottom: 1rem;
         color: var(--accent-color);
       }
-      
+
       p {
         margin-bottom: 2rem;
         color: var(--text-color);
@@ -137,7 +139,7 @@ import { fadeIn } from '../../animations/fade-in';
 
     button[type="submit"] {
       width: 100%;
-      
+
       &:disabled {
         opacity: 0.5;
         cursor: not-allowed;
@@ -148,6 +150,7 @@ import { fadeIn } from '../../animations/fade-in';
   `]
 })
 export class ContactFormComponent {
+  http = inject(HttpClient);
   contactForm: FormGroup;
   submitted = false;
 
@@ -163,11 +166,16 @@ export class ContactFormComponent {
 
   onSubmit() {
     if (this.contactForm.valid) {
-      console.log('Form data:', this.contactForm.value);
+      this.http.put('/api/email-service/',this.contactForm.value )
+        .pipe(take(1))
+        .subscribe({
+          next: () => {console.log('wysłany payload ' + this.contactForm.value )},
+          error: (error) => {console.log(error)},
+        })
       setTimeout(() => {
         this.submitted = true;
         this.contactForm.reset();
-      }, 800);
+      }, 300);
     }
   }
 }
