@@ -165,17 +165,37 @@ export class ContactFormComponent {
   }
 
   onSubmit() {
+    function buildFormMessage(): string {
+      const message =
+      `Czym się obecnie zajmujesz?
+       \n${this.contactForm.get('currentActivity')}
+        \nDlaczego szukasz zmiany?
+        \n${this.contactForm.get('reasonForChange')}
+        \nIle godzin tygodniowo możesz poświęcić?
+        \n${this.contactForm.get('hoursAvailable')}`
+        return message;
+    }
+
     if (this.contactForm.valid) {
-      this.http.put('/api/email-service',this.contactForm.value )
+      const formRequest = {
+        firstname: this.contactForm.get('name'),
+        email: this.contactForm.get('email'),
+        topic: 'Wiadomość ze strony izabelaolszewska.pl',
+        message: buildFormMessage()
+      }
+      this.http.put('/api/email-service', formRequest)
         .pipe(take(1))
         .subscribe({
-          next: () => {console.log('wysłany payload ' + this.contactForm.value )},
+          next: () => {
+            setTimeout(() => {
+              this.submitted = true;
+              this.contactForm.reset();
+            }, 300);
+            },
           error: (error) => {console.log(error)},
         })
-      setTimeout(() => {
-        this.submitted = true;
-        this.contactForm.reset();
-      }, 300);
+
     }
   }
 }
+export type FormRequest = {email: string; topic: string; message: string, firstname: string;}
