@@ -33,11 +33,7 @@
             "server": "src/main.server.ts",
             "outputMode": "server",
             "security": {
-              "allowedHosts": [
-                "izabelaolszewska.pl",
-                "www.izabelaolszewska.pl",
-                "localhost"
-              ]
+              "allowedHosts": ["all"]
             },
             "ssr": {
               "entry": "src/server.ts"
