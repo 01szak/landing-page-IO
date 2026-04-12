@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
   template: `
     <nav [class.scrolled]="isScrolledDown">
       <div class="container nav-content">
-        <li (click)="scrollTo('hero')" class="logo">IZA</li>
+        <a (click)="scrollTo('hero')" class="logo">HOME</a>
         <ul class="nav-links" [class.active]="isMobileMenuOpen">
           <li (click)="scrollTo('for-who')">Dla kogo</li>
           <li (click)="scrollTo('story')">O mnie</li>

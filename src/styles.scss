@@ -68,9 +68,19 @@ ul {
 
 section {
   padding: 6rem 0;
+  overflow: hidden; // Zabezpieczenie przed wychodzeniem elementów (np. animacji)
+  
   @media (max-width: 768px) {
     padding: 4rem 0;
   }
+}
+
+// Ensure Angular components behave like block elements
+app-navbar, app-hero-section, app-story, app-what-i-do, 
+app-how-it-works, app-benefits, app-for-who, 
+app-not-for-everyone, app-cta-section, app-contact-form, app-footer {
+  display: block;
+  width: 100%;
 }
 
 .btn {
@@ -113,5 +123,18 @@ section {
   &.visible {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  .section-title {
+    font-size: 3rem;
+    color: var(--text-color);
+    margin-bottom: 2rem;
+
+    @media (max-width: 768px) {
+      font-size: 2.5rem;
+    }
+    @media (max-width: 450px) {
+      padding: 0 10px 0 10px !important;
+    }
   }
 }

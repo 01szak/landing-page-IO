@@ -22,7 +22,9 @@ import { fadeIn } from '../../animations/fade-in';
           </p>
         </div>
         <div class="story-image">
-          <img ngSrc="/about.jpeg" alt="about-photo" height="544" width="435" class="image-placeholder"/>
+          <div class="image-wrapper">
+            <img ngSrc="/about.jpeg" alt="about-photo" height="544" width="435" class="image-placeholder"/>
+          </div>
         </div>
       </div>
     </section>
@@ -37,14 +39,13 @@ import { fadeIn } from '../../animations/fade-in';
 
         @media (max-width: 768px) {
           grid-template-columns: 1fr;
+          gap: 2rem;
+          word-wrap: break-word;
+          overflow-wrap: break-word;
+          text-align: center;
         }
       }
 
-      .section-title {
-        font-size: 3rem;
-        color: var(--text-color);
-        margin-bottom: 2rem;
-      }
 
       .story-text {
         p {
@@ -55,27 +56,52 @@ import { fadeIn } from '../../animations/fade-in';
           margin-bottom: 2rem;
         }
       }
+.story-image {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
 
-      .image-placeholder {
-        aspect-ratio: 4/5;
-        background: var(--secondary-bg);
-        border-radius: 30px;
-        position: relative;
-        overflow: hidden;
+.image-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-width: 435px; // Original image width
 
-        &::after {
-          content: '';
-          position: absolute;
-          top: 20px;
-          left: 20px;
-          right: -20px;
-          bottom: -20px;
-          border: 2px solid var(--accent-color);
-          border-radius: 30px;
-          z-index: -1;
-        }
-      }
-    `,
-  ],
+  &::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: -20px;
+    bottom: -20px;
+    border-radius: 30px;
+    z-index: -1;
+
+    @media (max-width: 768px) {
+      top: 15px;
+      left: 15px;
+      right: -15px;
+      bottom: -15px;
+    }
+
+    @media (max-width: 540px) {
+      display: none; // Completely hide border if screen is too narrow for offsets
+    }
+  }
+}
+
+.image-placeholder {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4/5;
+  background: var(--secondary-bg);
+  border-radius: 30px;
+  object-fit: cover;
+}
+
+`,
+],
 })
 export class StoryComponent {}

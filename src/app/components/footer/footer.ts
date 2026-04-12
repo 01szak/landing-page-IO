@@ -29,7 +29,7 @@ import { CommonModule } from '@angular/common';
       </div>
       <div class="container footer-bottom">
         <p>&copy; 2026 Izabela Olszewska. Wszelkie prawa zastrzeżone.</p>
-      </div>g
+      </div>
     </footer>
   `,
   styles: [`

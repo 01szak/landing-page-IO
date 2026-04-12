@@ -13,7 +13,7 @@ import { fadeIn } from '../../animations/fade-in';
         <div class="cta-card">
           <h2 class="section-title">Sprawdź, czy ten model jest dla Ciebie.</h2>
           <div class="cta-actions">
-            <a href="https://calendly.com" target="_blank" class="btn btn--primary">Umów rozmowę</a>
+<!--            <a href="https://calendly.com" target="_blank" class="btn btn&#45;&#45;primary">Umów rozmowę</a>-->
             <a href="#contact" class="btn btn--secondary">Wyślij wiadomość</a>
           </div>
         </div>
@@ -39,7 +39,7 @@ import { fadeIn } from '../../animations/fade-in';
       font-size: 3.5rem;
       margin-bottom: 3.5rem;
       color: var(--text-color);
-      
+
       @media (max-width: 768px) {
         font-size: 2.5rem;
       }
@@ -49,7 +49,7 @@ import { fadeIn } from '../../animations/fade-in';
       display: flex;
       justify-content: center;
       gap: 2rem;
-      
+
       @media (max-width: 768px) {
         flex-direction: column;
         align-items: center;
