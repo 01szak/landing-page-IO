@@ -35,7 +35,8 @@
             "security": {
               "allowedHosts": [
                 "izabelaolszewska.pl",
-                "www.izabelaolszewska.pl"
+                "www.izabelaolszewska.pl",
+                "localhost"
               ]
             },
             "ssr": {
