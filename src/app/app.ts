@@ -39,7 +39,7 @@ import { SeoService } from './services/seo';
       <app-benefits></app-benefits>
       <app-not-for-everyone></app-not-for-everyone>
       <app-cta-section></app-cta-section>
-      <app-contact-form></app-contact-form>
+<!--      <app-contact-form></app-contact-form>-->
     </main>
     <app-footer></app-footer>
   `,

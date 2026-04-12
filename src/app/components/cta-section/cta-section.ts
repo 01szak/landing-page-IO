@@ -14,7 +14,8 @@ import { fadeIn } from '../../animations/fade-in';
           <h2 class="section-title">Sprawdź, czy ten model jest dla Ciebie.</h2>
           <div class="cta-actions">
 <!--            <a href="https://calendly.com" target="_blank" class="btn btn&#45;&#45;primary">Umów rozmowę</a>-->
-            <a href="#contact" class="btn btn--secondary">Wyślij wiadomość</a>
+<!--            <a href="#contact" class="btn btn&#45;&#45;secondary">Wyślij wiadomość</a>-->
+            <a href="mailto:izaolszewska1979@gmail.com" class="btn btn--secondary">Wyślij wiadomość</a>
           </div>
         </div>
       </div>

@@ -24,6 +24,7 @@ import { CommonModule } from '@angular/common';
             <h4>Social Media</h4>
             <a href="https://www.instagram.com/iza_olszewska/">Instagram</a>
             <a href="https://www.facebook.com/iza.olszewska.16?locale=pl_PL">Facebook</a>
+            <a href="mailto:izaolszewska1979@gmail.com">Napisz do mnie!</a>
           </div>
         </div>
       </div>
