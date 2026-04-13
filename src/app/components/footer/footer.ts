@@ -22,8 +22,8 @@ import { CommonModule } from '@angular/common';
           </div>
           <div class="link-group">
             <h4>Social Media</h4>
-            <a href="https://www.instagram.com/iza_olszewska/">Instagram</a>
-            <a href="https://www.facebook.com/iza.olszewska.16?locale=pl_PL">Facebook</a>
+            <a href="https://www.instagram.com/bellisola_life?igsh=MWh5aWZ5aHFnamo2OA%3D%3D&utm_source=qr">Instagram</a>
+            <a href="https://www.facebook.com/share/18V4jZHEo8/?mibextid=wwXIfr">Facebook</a>
             <a href="mailto:izaolszewska1979@gmail.com">Napisz do mnie!</a>
           </div>
         </div>
